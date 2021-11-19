@@ -1,0 +1,11 @@
+{% autoescape off %}
+
+Hi {{ user.first_name }},
+
+YOUR ORDER HAS BEEN RECIEVED
+
+Order Number: {{ order.order_number }}
+Payment amount: {{ order.order_total }} $
+Payment by: {{ order.payment.payment_method }}
+
+{% endautoescape %}

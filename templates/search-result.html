@@ -1,0 +1,88 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block title %} result for {{request.GET.q}}{% endblock title %}
+
+{% block css %}
+	<link href="{% static 'css/cardproduct.css' %}" type="text/css" rel="stylesheet" />
+{% endblock css %}
+{% block content %}
+
+<!-- ========================= SECTION PAGETOP ========================= -->
+<section class="section-pagetop bg">
+<div class="container">
+	<h2 class="title-page">Search Result</h2>
+</div> <!-- container //  -->
+</section>
+<!-- ========================= SECTION INTRO END// ========================= -->
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+<div class="container">
+
+<div class="row">
+<main class="col-md-12">
+
+<header class="border-bottom mb-4 pb-3">
+		<div class="form-inline">
+			<span class="mr-md-auto">Search result for {{request.GET.q}}</span>
+			
+		</div>
+</header><!-- sect-heading -->
+
+<div class="row trending">
+	
+	{%for product in data %}
+	<div class=" col-md-3 col-sm-4 p-4">
+		<div class=" card-product card-product-grid">
+			<div class="imgBx ">
+				<img class="" src="{{product.image.url}}">
+				<ul class ="action">
+					<li>
+						{% if  request.user.is_authenticated %}
+							{% if product.stock > 0 %}
+							<a data-product={{product.id}} data-action="" onclick="location.href='{% url 'add_cart' product.id %}'">
+								<i class="fas fa-cart-plus" aria-hidden="true"></i>
+								<span>Add To cart</span>
+							</a>
+							{% else %}
+								<i class="fas fa-empty-set"aria-hidden="true"></i>
+								<span>Out of stock</span>
+							{% endif %}
+						{% else%}
+							<a href="{%url 'signin'%}">
+								<i class="fas fa-cart-plus" aria-hidden="true"></i>
+								<span>Please sign in</span>
+							</a>
+						{% endif%}
+					</li>
+					<li>
+						<a href="{% url 'detail_page' product.id %}">
+							<i class="fa fa-eye" aria-hidden="true"></i>
+							<span>View Detail</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="product-content">
+				<div class="productName"><h3>{{product.name}}</h3></div>
+				<div class="price_rating mt-1">
+					<div   class="rating">
+							<h2>${{product.price}} <del style = "color: #cebd9c; font-weight: 600;">${{product.rootPrice}}</del> </h2>
+							
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div> 	
+	{%endfor%}
+</div> 
+
+	</main> 
+
+</div>
+
+</div> <!-- container .//  -->
+</section>
+
+{% endblock content %}

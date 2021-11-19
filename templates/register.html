@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- ========================= SECTION CONTENT ========================= -->
+<section   class="section-content padding-y">
+
+<!-- ============================ COMPONENT REGISTER   ================================= -->
+	<div class="row mt-3">
+		<div class="col-lg-6 mt-3">
+			<img style="width: 100%;" src="{% static 'images/illustration_register.png'%}" alt="">
+		</div>
+	<div class="col-lg-5 ">
+		<div class="card mx-auto" style="max-width:520px; ">
+			<article class="card-body">
+			  <header class="mb-4"><h4 class="card-title">Sign up</h4></header>
+			  {% if messages %}
+	  
+					  {% for message in messages %}
+					  <div style="color: red;" class="alert alert-info">
+						  {{ message }}
+					  </div>
+					  {% endfor %}
+			  
+				  {% endif %}
+			  <form method="POST">
+				  {% csrf_token %}
+				  <!-- -------------USERNAME------------- -->
+				  <div class="mb-3">
+					  <label for="exampleInputPassword1" class="form-label">Username</label>
+					  <input type="text" class="form-control form" placeholder="Username" name = "username" id="username">
+				  </div>
+				  <!-- -------------NAME------------- -->
+				  <div class="row">
+					<div class="form-group col-md-6 form-label">
+						<label for="Name">First Name</label>
+						<input type="text" class="form-control form" placeholder="First name" name = "firstName" id="name">
+					</div>
+					<div class="form-group col-md-6 form-label">
+						<label for="Name">Last Name</label>
+						<input type="text" class="form-control form" placeholder="Last name" name = "lastName" id="name">
+					</div>
+				</div>
+				  <!-- -----------------EMAIL-------------- -->
+				  <div class="mb-3">
+					  <label for="exampleInputEmail1" class="form-label">Email address</label>
+					  <input type="email" name = "email" class="form-control form" placeholder="Email address" id="exampleInputEmail1" aria-describedby="emailHelp">
+				  </div>
+				  <!-- ----------------PHONE--------------- -->
+				  <div class="mb-3">
+					  <label for="exampleInputPassword1" class="form-label">Phone</label>
+					  <input type="text" class="form-control form" placeholder="Phone" name = "phone" id="name">
+				  </div>
+				  <!-- <div class="mb-3">
+					  <label for="exampleInputPassword1" class="form-label">Phone Number</label>
+					  <input type="number" name = "phone" class="form-control" id="phone">
+				  </div> -->
+				  <!-- -------------PASSWORD------------- -->
+				  <div class="mb-3">
+					  <label for="exampleInputPassword1" class="form-label">Password</label>
+					  <input type="password" name = "password" class="form-control form" id="exampleInputPassword1">
+				  </div>
+				  <!-- ------------------Confirm Password------------- -->
+				  <div class="mb-3">
+					  <label for="exampleInputPassword1" class="form-label"> Confirm Password</label>
+					  <input type="password" name = "confirmpassword" class="form-control form" id="exampleInputPassword2">
+				  </div>
+				  <button type="submit" class="btn btn-primary btn-block"> Sign UP  </button>
+			  </form>
+			  </article><!-- card-body.// -->
+		  </div> <!-- card .// -->
+		  <p class="text-center mt-4">Have an account? <a href="{%url 'signin' %}">Log In</a></p>
+		  <br><br>
+	</div>
+	</div>
+	
+<!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock content %}

@@ -1,0 +1,110 @@
+{% load static %}
+
+<nav  class="header-main border-bottom">
+<div class="container">
+<div class="row align-items-center">
+	<div class="col-lg-2 col-md-3 col-6">
+		<a href="{% url 'home' %}" class="brand-wrap">
+			<img class="logo" src="{% static './images/logo1.png' %}" alt="Logo">
+		</a>
+	</div>
+	{% comment %} <div class="col-lg col-sm col-md col-6 flex-grow-0">
+		<div class="category-wrap dropdown d-inline-block float-right">
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+				<i class="fa fa-bars"></i> All category
+			</button>
+
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="/">All Products</a>
+				{% for category in categories %}
+					<a class="dropdown-item" href="?category={{category.id}}">{{category.category_name}}</a>
+				{% endfor %}
+			</div>
+
+		</div>  <!-- category-wrap.// -->
+	</div> {% endcomment %}
+	<div class="col-lg col-sm col-md col-6 flex-grow-0">
+		<div class="category-wrap dropdown d-inline-block float-right">
+			<a  href="{% url 'home' %}" class=" nav-link  active "> Home </a>
+		</div>  <!-- category-wrap.// -->
+	</div>
+	<div class="col-lg col-sm col-md col-6 flex-grow-0">
+		<div class="category-wrap dropdown d-inline-block float-right">
+			<a  href="/#team" class="nav-link scrollto "> Team </a>
+		</div>  <!-- category-wrap.// -->
+	</div>
+	<div class="col-lg col-sm col-md col-6 flex-grow-0">
+		<div class="category-wrap dropdown d-inline-block float-right">
+				<a href="{% url 'store_page' %}" class="nav-link">Store</a>
+		</div>  <!-- category-wrap.// -->
+	</div>
+	<div class="col-lg col-sm col-md col-6 flex-grow-0">
+			<div class="category-wrap dropdown d-inline-block float-right">
+			<a href="{% url 'contact' %}" class="nav-link"> Contact </a>
+			</div>  <!-- category-wrap.// -->
+		</div>
+	<div class="col-lg  col-md-6 col-sm-12 col">
+		<form method="GET" action="/search" class="search">
+			<div class="input-group w-100">
+			    <input type="text"  name="q" class=" form-search form-control searchNav" style="width:60%;" placeholder="Search">
+			    <div class="input-group-append">
+			      <button style = "background-color: #fff; 
+				  	border: 1px solid #ced4da; 
+					border-left: none;
+				  	border-radius: 0 50px 50px 0;
+					outline: none;
+					box-shadow: none; " 
+				   class="btn btn-primary icon" type="submit">
+			        <i style="color: #606770;" class="fa fa-search"></i>
+			      </button>
+			    </div>
+		    </div>
+		</form> <!-- search-wrap .end// -->
+	</div> <!-- col.// -->
+	
+	
+	<div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+				<div class="d-flex justify-content-center mb-3 mb-lg-0">
+						{%if  request.user.is_authenticated %}
+						<!-- <a href="{%url 'profile' %}" class="widget-header pl-3 ml-3">
+							<div class="icon icon-sm rounded-circle border"><i class="fa fa-user-circle fa-lg"></i></div>
+						</a> -->
+							<a href="{%url 'cart' %}" class="widget-header pl-3 ml-3">
+								<div class="icon icon-sm rounded-circle border"><i style = "margin-top: 10px" class="fa fa-shopping-cart"></i></div>
+								{% if cart_count %}
+									<span id="cart-total" class="badge badge-pill badge-danger notify">{{ cart_count }}</span>
+								{% endif %}
+							</a>
+						{%endif%}	
+
+					{%if  request.user.is_authenticated %}
+					<div  class="category-wrap dropdown d-inline-block ml-5  ">
+							<button type="button" class="btn  dropdown-toggle cycle-style" data-toggle="dropdown">
+
+							</button>
+
+						<div class="dropdown-menu dropdown-menu1">
+							<a style=" display: flex;" href="{%url 'profile' %}" class="dropdown-item widget-header ml-0 mb-3">
+								<i style="font-size: 3rem;" class=" mt-2 fa fa-user-circle fa-lg mr-3"></i>
+								<div style="margin: auto;">
+									<h6>{{request.user.first_name}} {{request.user.last_name}}</h6>
+									<p>See your profile</p>
+								</div>
+							</a>
+							<a class="dropdown-item" href="{%url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Log Out </a>
+							
+						</div>
+			
+					</div>
+					
+					{%else%}
+						<a class=" nav-link   " href="{%url 'signin' %}">Sign in</a>
+						<a class=" nav-link   "  href="{%url 'register' %}"> Register</a>
+					{%endif%}
+
+				</div>
+	</div>
+</div>
+	</div>
+</nav>
+

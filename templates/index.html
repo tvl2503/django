@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}One of the Biggest Online Shopping Platform{% endblock title %}
+{% block css %}
+	<link href="{% static 'css/cardproduct.css' %}" type="text/css" rel="stylesheet" />
+{% endblock css %}
+{% block content %}
+
+<section  class="section-intro ">
+
+
+<div class="intro-banner-wrap">
+	<div class="swiper mySwiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          	<div style="background-image: url('{% static 'images/banners/hero-2.jpg.webp' %}');" class="swiper-slide swiper-slide__banner ">
+				<div class="container">
+					<div class="row ml-5">
+						<div class="col-xl-5 col-lg-7 col-md-8">
+						<div class="hero__text" >
+							<h6>Summer Collection</h6>
+							<h2 >Fall - Winter Collections 2030</h2>
+							<p >A specialist label creating luxury essentials. Ethically crafted with an unwavering
+								commitment to exceptional quality.</p>
+							<a href="{% url 'store_page' %}" class="btn btn-primary">Shop now <i class="fas fa-arrow-right"></i></a>	
+						</div>
+					</div>
+					</div>
+					
+				</div>
+			</div>
+        	<div style="background-image: url('{% static 'images/banners/hero-1.jpg.webp' %}')" class="swiper-slide swiper-slide__banner">
+				<div class="container">
+					<div class="row ml-5">
+						<div class="col-xl-5 col-lg-7 col-md-8">
+						<div class="hero__text">
+							<h6>Summer Collection</h6>
+							<h2 >Fall - Winter Collections 2030</h2>
+							<p >A specialist label creating luxury essentials. Ethically crafted with an unwavering
+								commitment to exceptional quality.</p>
+							<a href="{% url 'store_page' %}" class=" btn btn-primary">Shop now <i class="fas fa-arrow-right"></i></a>	
+						</div>
+					</div>
+					</div>
+					
+				</div>
+			</div>
+
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+      
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      
+        <!-- If we need scrollbar -->
+        <!-- <div class="swiper-scrollbar"></div> -->
+      </div>
+
+</div>
+</section>
+
+<section style = "background: #fff;" class="section-name padding-y-sm">
+<div class="container">
+
+<header class="section-heading">
+	<a href="{%url 'store_page' %}" class="btn btn-outline-primary float-right">See all</a>
+	<h3 class="section-title">Trending This Week</h3>
+</header><!-- sect-heading -->
+
+	<div class="row trending ">
+		{% for product in products %}
+			<div  class="col-xl-3 col-md-4 col-sm-6 p-4">
+				<div class=" card-product card-product-grid">
+					<div class="imgBx ">
+						<img class="" src="{{product.image.url}}">
+						<ul class ="action">
+							<li>
+								{% if  request.user.is_authenticated %}
+									{% if product.stock > 0 %}
+									<a data-product={{product.id}} data-action="" onclick="location.href='{% url 'add_cart' product.id %}'">
+										<i class="fas fa-cart-plus" aria-hidden="true"></i>
+										<span>Add To cart</span>
+									</a>
+									{% else %}
+										<i class="fas fa-empty-set"aria-hidden="true"></i>
+										<span>Out of stock</span>
+									{% endif %}
+								{% else%}
+									<a href="{%url 'signin'%}">
+										<i class="fas fa-cart-plus" aria-hidden="true"></i>
+										<span>Please sign in</span>
+									</a>
+								{% endif%}
+							</li>
+							<li>
+								<a href="{% url 'detail_page' product.id %}">
+									<i class="fa fa-eye" aria-hidden="true"></i>
+									<span>View Detail</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="product-content">
+						<div class="productName">
+							<div class="price_rating mt-1">
+						<h2>${{product.price}}</h2>
+						<div class="rating">
+							<i class="fas fa-star" aria-hidden="true"></i>
+							<i class="fas fa-star" aria-hidden="true"></i>
+							<i class="fas fa-star" aria-hidden="true"></i>
+							<i class="fas fa-star" aria-hidden="true"></i>
+							<i class="fas fa-star" aria-hidden="true"></i>
+						</div>
+					</div>
+
+						</div>
+					</div>
+				</div>
+			</div> 	
+		
+		{% endfor %}
+	
+	</div>
+
+</div>
+</section>
+
+<br>
+<div id="team">
+	<h2 style="text-align: center;">Team Member</h2>
+	<div class="swiper mySwiper1">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide swiper-slide-product ">
+			<div class="card" style="width: 18rem;">
+				<img src="{% static './images/avt.jpg' %}" class="card-img-top" alt="...">
+				<div class="card-body">
+				  	<h5 >Trần Võ Linh</h5>
+					<p>B19DCCN382</p>
+				</div>
+			  </div>
+		  </div>
+		  <div class="swiper-slide swiper-slide-product ">
+			<div class="card" style="width: 18rem;">
+				<img src="{% static './images/avt.jpg' %}" class="card-img-top" alt="...">
+				<div class="card-body">
+				 	 <h5 >Đào Công Tân</h5>
+					<p>B19DCCN570</p>
+				</div>
+			  </div>
+		  </div>
+		  <div class="swiper-slide swiper-slide-product ">
+			<div class="card" style="width: 18rem;">
+				<img src="{% static './images/avt.jpg' %}" class="card-img-top" alt="...">
+				<div class="card-body">
+				  <h5 >Dương Bảo Anh</h5>
+					<p>B19DCCN008</p>
+
+				</div>
+			  </div>
+		  </div>
+		  <div class="swiper-slide swiper-slide-product ">
+			<div class="card" style="width: 18rem;">
+				<img src="{% static './images/avt.jpg' %}" class="card-img-top" alt="...">
+				<div class="card-body">
+				 	<h5 >Chu Minh Hoàng</h5>
+					<p>B19DCCN272</p>
+
+				</div>
+			  </div>
+		  </div>
+		  <div class="swiper-slide swiper-slide-product ">
+			<div class="card" style="width: 18rem;">
+				<img src="{% static './images/avt.jpg' %}" class="card-img-top" alt="...">
+				<div class="card-body">
+				  	<h5 >Nguyễn Tuấn Dũng</h5>
+					<p>B19DCCN127</p>
+
+				</div>
+			  </div>
+		  </div>
+		  <div class="swiper-slide swiper-slide-product ">
+			<div class="card" style="width: 18rem;">
+				<img src="{% static './images/avt.jpg' %}" class="card-img-top" alt="...">
+				<div class="card-body">
+				  <h5 >Nguyễn Sơn Tùng</h5>
+					<p>B19DCCN629</p>
+				</div>
+			  </div>
+		  </div>
+        </div>
+		<div  class="swiper-pagination"></div>
+	</div>
+</div>		
+
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<script>
+	const swiper = new Swiper('.mySwiper', {
+		// Optional parameters
+		loop: true,
+		autoplay : {
+			delay : 3000,
+		},
+		// If we need pagination
+		
+		pagination: {
+		  el: '.swiper-pagination',
+		  clickable: true,
+		},
+	  
+		// Navigation arrows
+		navigation: {
+		  nextEl: '.swiper-button-next',
+		  prevEl: '.swiper-button-prev',
+		},
+	  
+		// And if we need scrollbar
+		scrollbar: {
+		  el: '.swiper-scrollbar',
+		},
+	  });
+	const swiper1 = new Swiper(".mySwiper1", {
+		slidesPerView: 1,
+        spaceBetween: 10,
+		loop: true,
+		autoplay : {
+			delay : 2000,
+		},
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 50,
+          },
+        },
+		
+      });
+  </script>
+{% endblock content %}

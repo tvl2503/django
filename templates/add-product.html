@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Thêm Sản Phẩm{% endblock title %}
+    
+{% block content %}
+   
+    <section class="section-conten padding-y" style="min-height:84vh">
+		<div class="card mx-auto" style="max-width: 450px; margin-top:100px;">
+		  <div class="card-body">
+		  <h4 class="card-title mb-4">Add Product</h4>
+		  <form method="POST">
+			  {% csrf_token %}
+            <select name = "category"  class="form-control mt-3" aria-label="Default select example">
+                {% for categori in category %}
+                    <option value="1" >{{categori.category_name}}</option>
+                {% endfor %}
+            </select>
+			  <div class="form-group  mt-3">
+                <label for="exampleInputPassword1" class="form-label">Name</label>
+				 <input type="text"  class="form-control" required name = "name" placeholder="Name" >
+			  </div> 
+			  <div class="form-group">
+                <label for="exampleInputPassword1" class="form-label">Root Price</label>
+				<input type="number" style="max-width: 90px;" name = "rootprice"  class="form-control" value="0" min="0"  >
+			  </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1" class="form-label">Price</label>
+				<input type="number" style="max-width: 90px;" name = "price"  class="form-control" value="0" min="0" >
+			  </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1" class="form-label">Description</label>
+				<input type="text" name = "desc" required class="form-control" maxlength="200"  placeholder="Description" >
+			  </div> 
+              <div class="form-group">
+                <label for="exampleInputPassword1" class="form-label">Image Product</label>
+				<input type="file" name = "image" required   placeholder="Choose File" >
+			  </div> 
+              <div class="form-group">
+                <label for="exampleInputPassword1" class="form-label">Stock</label>
+				<input type="number" style="max-width: 90px;" name = "stock"  class="form-control " value="0" min="0" >
+			  </div>
+              <div class="form-group">
+                <input type="checkbox" name = "is_available" checked >
+                <label for="exampleInputPassword1" class="form-label">Is available</label>
+			  </div>
+			  <div class="form-group">
+				  <button type="submit" class="btn btn-primary btn-block"> Add  </button>
+			  </div>  
+		  </form>
+		  </div> 
+		</div>
+	
+
+	
+	</section>
+
+
+{% endblock content %}

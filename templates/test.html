@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.css" />
+
+    <style>
+        body{
+            padding: 50px;
+        }
+        .swiper {
+            height: 500px;
+          }
+        .swiper-slide{
+            background: #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div style="background-image: url('https://salt.tikicdn.com/cache/w1080/ts/banner/86/01/b4/d03589c618a5577339b466c0c76fbf5f.png.webp');" class="swiper-slide "></div>
+          <div style="background-image: url('https://salt.tikicdn.com/cache/w1080/ts/banner/85/b3/e6/96899c707b7c88b82d22ed78ae11737c.png.webp')" class="swiper-slide">Slide 2</div>
+          <div style="background-image: url('https://salt.tikicdn.com/cache/w1080/ts/banner/0c/55/77/aa7eee51bfd5bb64a2774192348f4623.png.webp')" class="swiper-slide">Slide 3</div>
+
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+      
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      
+        <!-- If we need scrollbar -->
+        <!-- <div class="swiper-scrollbar"></div> -->
+      </div>
+
+
+
+      
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            loop: true,
+          
+            // If we need pagination
+            effect: 'cube',
+                    grabCursor: true,
+                    cubeEffect: {
+                        shadow: true,
+                        slideShadows: true,
+                        shadowOffset: 20,
+                        shadowScale: 0.94,
+                    },
+            pagination: {
+              el: '.swiper-pagination',
+            },
+          
+            // Navigation arrows
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
+          
+            // And if we need scrollbar
+            scrollbar: {
+              el: '.swiper-scrollbar',
+            },
+          });
+      </script>
+</body>
+</html>

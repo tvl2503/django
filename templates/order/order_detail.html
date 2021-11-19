@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}History order{% endblock title %}
+
+{% block content %}
+<section class="section-content padding-y bg">
+<div class="container">
+<div class="row">
+	<aside class="col-lg-12">
+		<div class="card">
+			<table class="table table-borderless table-shopping-cart">
+				<thead class="text-muted">
+					<tr class="small text-uppercase">
+						<th scope="col">Product</th>
+						<th scope="col">Payment method</th>
+						<th scope="col" width="120">Quantity</th>
+						<th scope="col" width="120">Total</th>
+						<th scope="col" class="text-right" width="200"> </th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for ord in order  %}
+						<tr>
+							<td>
+								<figure class="itemside align-items-center">
+									<div class="aside"><img src="{{ ord.product.image.url }}" class="img-sm"></div>
+									
+									<figcaption class="info">
+										<a href="#" class="title text-dark">{{ ord.product.name }}</a>
+										<p class="text-muted small">{{ord.product.category}}</p>
+										<small class="text-muted">
+										${{ ord.product_price }} each
+										</small>
+									</figcaption>
+                                    
+								</figure>
+							</td>
+                            <td>
+                                <div class="price-wrap">
+									<var class="price">{{ ord.payment.payment_method }}</var>
+								</div>
+                            </td>
+							<td> 
+                            
+								<!-- col.// -->
+								<div class="col">
+									<div class="input-group input-spinner">
+										<div class="input-group-prepend">
+											{% comment %} <form action="{% url 'remove_cart' cart_item.product.id cart_item.id %}" method="post">
+												{% csrf_token %} {% endcomment %}
+{% comment %} 														
+											<button class="btn btn-light" type="submit" id="button-minus" onclick="location.href='{% url 'remove_cart' cart_item.product.id cart_item.id %}'">
+												<i class="fa fa-minus"></i>
+											</button> {% endcomment %}
+											{% comment %} </form> {% endcomment %}
+										</div>
+                                    
+										<input type="text" class="form-control" value="{{ ord.quantity }}" />
+										<div class="input-group-append">
+											{% comment %} <form action="{% url 'add_cart' cart_item.product.id %}" method="post">
+												{% csrf_token %} {% endcomment %}
+														
+											{% comment %} <button class="btn btn-light" type="submit" id="button-plus" onclick="location.href='{% url 'add_cart' cart_item.product.id %}'">
+												<i class="fa fa-plus"></i>
+											</button> {% endcomment %}
+											{% comment %} </form> {% endcomment %}
+										</div>
+									</div><!-- input-group.// -->
+								</div><!-- col.// -->
+							</td>
+							<td>
+								<div class="price-wrap">
+									<var class="price">${{ ord.get_total }}</var>
+									
+								</div>
+									<!-- price-wrap .// -->
+							</td>
+							
+
+						</tr>
+					{% endfor %}
+		
+				</tbody>
+			</table>
+		</div> <!-- card.// -->
+
+	</aside>
+</div> <!-- container.// -->
+</section>
+{% endblock content %}

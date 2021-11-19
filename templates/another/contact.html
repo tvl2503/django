@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us{% endblock title %}
+
+{% block content %}
+<!-- Contact Us Section -->
+<section style="background-image: url('https://preview.colorlib.com/theme/cozastore/images/xbg-01.jpg.pagespeed.ic.2e1HWxQapm.webp'); padding: 92px 15px;" class="section-pagetop bg">
+	<div class="container ">
+		<h2 style="color: #fff;"  class="title-page text-center">Contact Us</h2>
+		
+	</div> 
+</section>
+        <section class="contact-us">
+            <div class="container">
+                
+                <div class="row mt-3">
+                    <div class="col-lg-7 mt-3">
+                        <form action="/" class="mb-4 mb-lg-0">
+                            <div class="form-row">
+                                <div class="col-md-6 form-group">
+                                    <i  style="color: red; font-size: 20px;" class="fas fa-phone"></i>
+                                    <span>Phone number: 0123456789</span>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <i style="color: red; font-size: 20px;" class="fas fa-envelope"></i>
+                                    <span>Email: team1btlpython@gmail.com</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <i style="color: red; font-size: 20px;" class="fas fa-map-marker-alt"></i>
+                                <span>Address: Học Viện Công Nghệ Bưu Chính Viễn Thông</span>
+                            </div>
+                            {% comment %} <div class="form-group">
+                                <textarea class="form-control" name="message" placeholder="Type Message"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-light">Contact Now</button> {% endcomment %}
+                        </form>
+                        <div class="map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3224.3783833071075!2d105.78658604452094!3d20.980837369754067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135accdd8a1ad71%3A0xa2f9b16036648187!2zSOG7jWMgdmnhu4duIEPDtG5nIG5naOG7hyBCxrB1IGNow61uaCB2aeG7hW4gdGjDtG5n!5e0!3m2!1svi!2s!4v1636715888846!5m2!1svi!2s" width="80%" height="350" frameborder="0" style="border: 0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <h3>Feel free to contact us. <br>
+                            We'll be glad to hear from you, buddy.</h3>
+                        <form action="">
+                            <div class="row mt-3">
+                                <div class="form-group col-md-6">
+                                    <label for="Name">Your Name</label>
+                                    <input type="text" class="form-control form" name = "name" required >
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="Name">Your Email</label>
+                                    <input type="text" class="form-control form" name = "email" required >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Name">Subject</label>
+                                <input type="text" class="form-control form" name = "subject" required >
+                            </div>
+                            <div class="form-group">
+                                <label for="Name">Message</label>
+                                <textarea class="form-control form" name="message" id="" cols="" rows="8"></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary" type="submit">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Contact Us Section -->
+
+{% endblock content %}

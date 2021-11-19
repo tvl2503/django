@@ -1,0 +1,52 @@
+{% extends "./base.html" %}
+{% load static %}
+{% block content %}
+	<section  class="section-conten padding-y" style="min-height:84vh">
+		<div class="row mt-3">
+			<div class="col-lg-7">
+				<img style="width: 100%;" src="{% static 'images/illustration_login.png'%}" alt="">
+			</div>
+			<div class="col-lg-4 ">
+				<div class="card mx-auto" >
+				<div class="card-body">
+					<h4 class="card-title mb-4">Sign in</h4>
+						{% if messages %}
+
+							{% for message in messages %}
+							<div   class="alert alert-info">
+								{{ message }}
+							</div>
+							{% endfor %}
+					
+						{% endif %}
+					<form method="POST">
+						{% csrf_token %}
+						<div class="form-group">
+							<input type="text" class="form-control form" name = "username" placeholder="Name" >
+						 </div> <!-- form-group// -->
+						 <div class="form-group">
+						   <input type="password" name = "password"  class="form-control form"  placeholder="Password" >
+						 </div> <!-- form-group// -->
+						 <div class="form-group">
+							 <a href="{%url 'forget_password' %}" class="float-right">Forgot password?</a> 
+						 </div>
+						 <div class="form-group">
+							 <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+						 </div>  
+					</form>
+				</div> 
+
+				<p class="text-center mt-4">Don't have account? <a href="{%url 'register' %}">Register</a></p>
+				<br><br>
+				</div>
+			</div>
+		</div>
+
+		
+	
+	<!-- ============================ COMPONENT LOGIN  END.// ================================= -->
+	
+	
+	</section>
+	
+{% endblock content %}
