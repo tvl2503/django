@@ -170,7 +170,7 @@ def ForgerPassword(request):
     return render(request , 'password/forget-password.html')   
 def send_mail_after_registration(email , token):
     subject = 'Your accounts need to be verified'
-    message = f"Hello, Hi paste the link to verify your account http://127.0.0.1:8000/account/verify/{token}"
+    message = f"Hello, Hi paste the link to verify your account http://django-btl.herokuapp.com/account/verify/{token}"
     email_from = settings.EMAIL_HOST_USER 
     recipient_list = [email]
     send_mail(subject, message , email_from ,recipient_list)
